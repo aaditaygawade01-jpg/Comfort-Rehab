@@ -28,6 +28,8 @@
 
   /* Transitions */
   --transition-smooth: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  color-scheme: light;
+  forced-color-adjust: none;
 }
 
 /* Global Reset & Base Styling */
@@ -35,6 +37,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  color-scheme: light;
+  forced-color-adjust: none;
 }
 
 body {
@@ -540,25 +547,6 @@ section.bg-page-section {
   border-radius: 20px;
 }
 
-/* Dark mode variables */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-page: #0F172A;
-    --bg-white: #1E293B;
-    --text-dark: #F1F5F9;
-    --text-gray: #CBD5E1;
-    --text-light: #94A3B8;
-    --blue-mid: #60A5FA;
-    --blue-light: #BFDBFE;
-    --green: #34D399;
-    --green-dark: #059669;
-    
-    --nav-bg: rgba(15, 23, 42, 0.85);
-    --nav-bg-scrolled: rgba(15, 23, 42, 0.93);
-    --mobile-menu-bg: rgba(15, 23, 42, 0.98);
-    --input-border: rgba(255, 255, 255, 0.15);
-  }
-}
 
 /* Typography utilities */
 .title-lg {
