@@ -78,17 +78,18 @@ export default function Gallery() {
                 onMouseEnter={() => setHovered(index)}
                 onMouseLeave={() => setHovered(null)}
               >
-                {/* Photo */}
-                <img
-                  src={item.src}
-                  alt={item.title}
+                {/* Photo (background-cover to avoid letterbox/white gaps) */}
+                <div
+                  role="img"
+                  aria-label={item.title}
                   loading="lazy"
-                  decoding="async"
-                  fetchPriority="low"
                   style={{
                     width: '100%',
                     height: '100%',
-                    objectFit: 'cover',
+                    backgroundImage: `url(${item.src})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
                     transition: 'transform 0.55s cubic-bezier(0.25,0.46,0.45,0.94)',
                     transform: isHovered ? 'scale(1.08)' : 'scale(1)',
                     display: 'block',
