@@ -9,20 +9,8 @@ export default function About() {
           {/* LEFT: Stacked card composition */}
           <div className="col-lg-5 col-12 position-relative">
             
-            {/* Background photo area behind card */}
-            <div 
-              className="position-absolute"
-              style={{
-                top: '-30px',
-                left: '-20px',
-                width: '100%',
-                height: '110%',
-                borderRadius: '24px',
-                background: 'linear-gradient(135deg, rgba(37,99,235,0.05) 0%, rgba(37,99,235,0.01) 100%)',
-                border: '1px dashed rgba(37,99,235,0.15)',
-                zIndex: 1
-              }}
-            />
+            {/* Background photo area behind card (responsive) */}
+            <div className="about-bg position-absolute" />
 
             {/* Main identity card */}
             <div 
