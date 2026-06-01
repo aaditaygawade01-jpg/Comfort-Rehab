@@ -119,19 +119,7 @@ export default function About() {
             </div>
 
             {/* Floating Detail Card overlapping bottom-right */}
-            <div 
-              className="position-absolute bg-white p-3 floating-element-delay-1"
-              style={{
-                borderRadius: '20px',
-                boxShadow: '0 15px 35px rgba(37,99,235,0.18)',
-                border: '1px solid rgba(255,255,255,0.8)',
-                bottom: '-25px',
-                right: '10px',
-                width: '210px',
-                zIndex: 20,
-                textAlign: 'left'
-              }}
-            >
+            <div className="about-floating-card floating-element-delay-1">
               <div 
                 className="label-caps mb-1"
                 style={{ color: 'var(--green-dark)', fontSize: '10px' }}
@@ -210,11 +198,12 @@ export default function About() {
                 Learn More <span className="ms-1">↗</span>
               </a>
               <div 
-                className="d-flex align-items-center px-4 py-2 bg-white"
+                className="d-flex align-items-center px-4 py-2"
                 style={{
                   borderRadius: '100px',
                   border: '1px solid var(--blue-mid)',
-                  height: '48px'
+                  height: '48px',
+                  backgroundColor: 'var(--bg-white)'
                 }}
               >
                 <a 

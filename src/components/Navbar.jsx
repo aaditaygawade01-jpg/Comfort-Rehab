@@ -57,7 +57,7 @@ export default function Navbar() {
         style={{
           height: '68px',
           zIndex: 999,
-          backgroundColor: scrolled ? 'rgba(255, 255, 255, 0.93)' : 'rgba(255, 255, 255, 0.85)',
+          backgroundColor: scrolled ? 'var(--nav-bg-scrolled)' : 'var(--nav-bg)',
           borderBottom: '1px solid rgba(37, 99, 235, 0.08)',
           boxShadow: scrolled ? 'var(--shadow-navbar)' : 'none',
           transition: 'var(--transition-smooth)'
@@ -68,24 +68,19 @@ export default function Navbar() {
           {/* Logo Brand left */}
           <div 
             onClick={() => scrollTo('home')} 
-            className="d-flex align-items-center cursor-pointer"
-            style={{ cursor: 'pointer' }}
+            className="d-flex align-items-center"
+            style={{ cursor: 'pointer', gap: '10px' }}
           >
-            <div 
-              className="d-flex align-items-center justify-content-center text-white"
+            <img
+              src="/logo.png"
+              alt="Comfort Rehab Logo"
               style={{
-                width: '36px',
-                height: '36px',
-                backgroundColor: 'var(--blue-mid)',
-                borderRadius: '10px',
-                fontFamily: 'var(--font-headings)',
-                fontWeight: 800,
-                fontSize: '16px',
-                marginRight: '10px'
+                height: '54px',
+                width: 'auto',
+                objectFit: 'contain',
+                display: 'block',
               }}
-            >
-              CR
-            </div>
+            />
             <div>
               <div 
                 style={{
@@ -225,7 +220,7 @@ export default function Navbar() {
           style={{
             top: '68px',
             bottom: 0,
-            backgroundColor: 'rgba(255, 255, 255, 0.98)',
+            backgroundColor: 'var(--mobile-menu-bg)',
             zIndex: 998,
             transition: 'var(--transition-smooth)'
           }}

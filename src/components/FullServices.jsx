@@ -7,44 +7,44 @@ export default function FullServices() {
   const services = [
     {
       num: '01',
-      emoji: '🦿',
       title: 'Lower Limb Prosthetics',
-      desc: 'Customized artificial legs including transtibial, transfemoral, and microprocessor-controlled knee systems.'
+      desc: 'Customized artificial legs including transtibial, transfemoral, and microprocessor-controlled knee systems.',
+      img: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=500&q=80'
     },
     {
       num: '02',
-      emoji: '🦾',
       title: 'Upper Limb Prosthetics',
-      desc: 'Advanced mechanical, myoelectric, and bionic hand/arm solutions custom tailored for your needs.'
+      desc: 'Advanced mechanical, myoelectric, and bionic hand/arm solutions custom tailored for your needs.',
+      img: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80'
     },
     {
       num: '03',
-      emoji: '🦵',
       title: 'Lower Limb Orthotics',
-      desc: 'Custom braces, AFOs, KAFOs, and calipers designed to support, align, and improve walking patterns.'
+      desc: 'Custom braces, AFOs, KAFOs, and calipers designed to support, align, and improve walking patterns.',
+      img: 'https://images.unsplash.com/photo-1598256989800-fe5f95da9787?auto=format&fit=crop&w=500&q=80'
     },
     {
       num: '04',
-      emoji: '🫀',
       title: 'Spinal Orthotics & Bracing',
-      desc: 'Customized spinal braces (Scoliosis braces, Taylor braces, ASH braces) for stabilization and deformity correction.'
+      desc: 'Customized spinal braces (Scoliosis braces, Taylor braces, ASH braces) for stabilization and deformity correction.',
+      img: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=500&q=80'
     },
     {
       num: '05',
-      emoji: '🤲',
       title: 'Upper Limb Splints',
-      desc: 'Personalized static and dynamic splints/braces for finger, hand, wrist, and elbow rehabilitation.'
+      desc: 'Personalized static and dynamic splints/braces for finger, hand, wrist, and elbow rehabilitation.',
+      img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=500&q=80'
     },
     {
       num: '06',
-      emoji: '🏃',
       title: 'Diabetic & Sports Foot Care',
-      desc: 'Custom-molded diabetic insoles, orthopedic footwear, and sports arch supports to protect and cushion.'
+      desc: 'Custom-molded diabetic insoles, orthopedic footwear, and sports arch supports to protect and cushion.',
+      img: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=500&q=80'
     }
   ];
 
   return (
-    <section id="services" className="bg-page-section">
+    <section id="services" className="bg-page-section" style={{ padding: '100px 0' }}>
       <div className="container">
         
         {/* Label & Header */}
@@ -75,49 +75,81 @@ export default function FullServices() {
           {services.map((svc, index) => (
             <div key={index} className="col-lg-4 col-md-6 col-12 reveal-item">
               <div 
-                className="nuvica-card glass p-4 h-100 d-flex flex-column justify-content-between position-relative"
+                className="nuvica-card glass p-3 h-100 d-flex flex-column justify-content-between position-relative"
                 style={{
                   border: '1px solid rgba(37,99,235,0.05)',
-                  minHeight: '280px',
-                  textAlign: 'left'
+                  textAlign: 'left',
+                  borderRadius: '24px',
+                  overflow: 'hidden'
                 }}
               >
                 
                 <div>
-                  {/* Top line with Number & Icon */}
-                  <div className="d-flex justify-content-between align-items-center mb-3">
+                  {/* Card Image Header */}
+                  <div 
+                    style={{
+                      width: '100%',
+                      height: '160px',
+                      borderRadius: '16px',
+                      overflow: 'hidden',
+                      marginBottom: '20px',
+                      position: 'relative'
+                    }}
+                  >
+                    <img 
+                      src={svc.img} 
+                      alt={svc.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        transition: 'transform 0.5s ease'
+                      }}
+                      className="service-card-img"
+                    />
+                    
+                    {/* Floating Service Number */}
                     <span 
                       style={{
+                        position: 'absolute',
+                        top: '12px',
+                        right: '12px',
+                        background: 'rgba(255,255,255,0.85)',
+                        backdropFilter: 'blur(8px)',
+                        padding: '4px 10px',
+                        borderRadius: '8px',
                         fontFamily: 'var(--font-headings)',
                         fontWeight: 700,
-                        fontSize: '14px',
-                        color: 'var(--text-light)'
+                        fontSize: '12px',
+                        color: 'var(--text-dark)'
                       }}
                     >
                       {svc.num}
                     </span>
-                    <div
-                      style={{
-                        width: '44px',
-                        height: '44px',
-                        filter: 'drop-shadow(0 8px 16px rgba(0,0,0,0.08))'
-                      }}
-                    >
-                      {svc.num === '01' && <img src={prostheticLegIcon} alt="Prosthetic Leg" style={{ width: '100%', height: '100%' }} />}
-                      {svc.num === '02' && <img src={prostheticArmIcon} alt="Prosthetic Arm" style={{ width: '100%', height: '100%' }} />}
-                      {svc.num === '03' && <img src={prostheticFootIcon} alt="Prosthetic Foot" style={{ width: '100%', height: '100%' }} />}
-                    </div>
                   </div>
 
-                  {/* Title */}
-                  <h3 
-                    className="mb-2 title-md"
+                  {/* Title & Icon Header */}
+                  <div className="d-flex align-items-center justify-content-between mb-3">
+                    <h3 
+                      className="m-0 title-md"
                       style={{
-                        color: 'var(--text-dark)'
+                        color: 'var(--text-dark)',
+                        fontSize: '18px',
+                        fontWeight: 700
                       }}
-                  >
-                    {svc.title}
-                  </h3>
+                    >
+                      {svc.title}
+                    </h3>
+                    
+                    {/* Small Icon decoration for P&O services */}
+                    {['01', '02', '03'].includes(svc.num) && (
+                      <div style={{ width: '28px', height: '28px', opacity: 0.85 }}>
+                        {svc.num === '01' && <img src={prostheticLegIcon} alt="Prosthetic Leg" style={{ width: '100%', height: '100%' }} />}
+                        {svc.num === '02' && <img src={prostheticArmIcon} alt="Prosthetic Arm" style={{ width: '100%', height: '100%' }} />}
+                        {svc.num === '03' && <img src={prostheticFootIcon} alt="Prosthetic Foot" style={{ width: '100%', height: '100%' }} />}
+                      </div>
+                    )}
+                  </div>
 
                   {/* Description */}
                   <p 

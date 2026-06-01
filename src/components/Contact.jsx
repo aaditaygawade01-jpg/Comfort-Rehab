@@ -207,14 +207,15 @@ export default function Contact() {
                       placeholder="e.g. John Doe"
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className="w-100 bg-white"
+                      className="w-100"
                       style={{
-                        border: '1.5px solid #E2E8F4',
+                        border: '1.5px solid var(--input-border)',
                         borderRadius: '12px',
                         padding: '13px 16px',
                         fontFamily: 'var(--font-body)',
                         fontSize: '14px',
                         color: 'var(--text-dark)',
+                        backgroundColor: 'var(--bg-white)',
                         outline: 'none',
                         transition: 'var(--transition-smooth)'
                       }}
@@ -223,7 +224,7 @@ export default function Contact() {
                         e.target.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)';
                       }}
                       onBlur={(e) => {
-                        e.target.style.borderColor = '#E2E8F4';
+                        e.target.style.borderColor = 'var(--input-border)';
                         e.target.style.boxShadow = 'none';
                       }}
                     />
@@ -237,14 +238,15 @@ export default function Contact() {
                       placeholder="e.g. +91 98922 51088"
                       value={form.phone}
                       onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="w-100 bg-white"
+                      className="w-100"
                       style={{
-                        border: '1.5px solid #E2E8F4',
+                        border: '1.5px solid var(--input-border)',
                         borderRadius: '12px',
                         padding: '13px 16px',
                         fontFamily: 'var(--font-body)',
                         fontSize: '14px',
                         color: 'var(--text-dark)',
+                        backgroundColor: 'var(--bg-white)',
                         outline: 'none',
                         transition: 'var(--transition-smooth)'
                       }}
@@ -253,7 +255,7 @@ export default function Contact() {
                         e.target.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)';
                       }}
                       onBlur={(e) => {
-                        e.target.style.borderColor = '#E2E8F4';
+                        e.target.style.borderColor = 'var(--input-border)';
                         e.target.style.boxShadow = 'none';
                       }}
                     />
@@ -266,14 +268,15 @@ export default function Contact() {
                       placeholder="e.g. info@comfortrehab.in"
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
-                      className="w-100 bg-white"
+                      className="w-100"
                       style={{
-                        border: '1.5px solid #E2E8F4',
+                        border: '1.5px solid var(--input-border)',
                         borderRadius: '12px',
                         padding: '13px 16px',
                         fontFamily: 'var(--font-body)',
                         fontSize: '14px',
                         color: 'var(--text-dark)',
+                        backgroundColor: 'var(--bg-white)',
                         outline: 'none',
                         transition: 'var(--transition-smooth)'
                       }}
@@ -282,7 +285,7 @@ export default function Contact() {
                         e.target.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)';
                       }}
                       onBlur={(e) => {
-                        e.target.style.borderColor = '#E2E8F4';
+                        e.target.style.borderColor = 'var(--input-border)';
                         e.target.style.boxShadow = 'none';
                       }}
                     />
@@ -295,14 +298,15 @@ export default function Contact() {
                       placeholder="How can we help you?"
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
-                      className="w-100 bg-white"
+                      className="w-100"
                       style={{
-                        border: '1.5px solid #E2E8F4',
+                        border: '1.5px solid var(--input-border)',
                         borderRadius: '12px',
                         padding: '13px 16px',
                         fontFamily: 'var(--font-body)',
                         fontSize: '14px',
                         color: 'var(--text-dark)',
+                        backgroundColor: 'var(--bg-white)',
                         outline: 'none',
                         resize: 'none',
                         transition: 'var(--transition-smooth)'
@@ -312,7 +316,7 @@ export default function Contact() {
                         e.target.style.boxShadow = '0 0 0 3px rgba(37,99,235,0.1)';
                       }}
                       onBlur={(e) => {
-                        e.target.style.borderColor = '#E2E8F4';
+                        e.target.style.borderColor = 'var(--input-border)';
                         e.target.style.boxShadow = 'none';
                       }}
                     />

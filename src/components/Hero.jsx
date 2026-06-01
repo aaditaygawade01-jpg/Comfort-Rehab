@@ -18,14 +18,9 @@ export default function Hero() {
           &amp; Lives
         </h1>
 
-        {/* Italic subtitle */}
-        <p className="hero-subtitle">
-          <em>Custom Prosthetics &amp; Orthotics Since 2002</em>
-        </p>
-
         {/* Description */}
-        <p className="hero-desc">
-          Comfort Rehab is Kolhapur's trusted destination<br className="d-none d-md-inline" />
+        <p className="hero-desc" style={{ fontSize: '17px', fontWeight: 600, lineHeight: 1.85 }}>
+          <span style={{ color: 'var(--blue-mid)', fontWeight: 700 }}>Comfort Rehab</span> is Kolhapur's trusted destination<br className="d-none d-md-inline" />
           for custom prosthetics and orthotics,<br className="d-none d-md-inline" />
           combining clinical expertise with compassionate care.
         </p>
@@ -49,6 +44,11 @@ export default function Hero() {
             alt="Comfort Rehab — prosthetic and orthotic care"
             className="hero-image"
           />
+        </div>
+        
+        {/* Floating text badge overlaid on image */}
+        <div className="hero-image-badge floating-element-delay-1">
+          Custom Prosthetics &amp; Orthotics <span style={{ color: 'var(--green)' }}>Since 2002</span>
         </div>
       </div>
     </section>
