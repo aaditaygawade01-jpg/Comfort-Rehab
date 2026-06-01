@@ -64,9 +64,9 @@ export default function App() {
       
       <FullServices />
       
-      <WhyChooseUs />
-      
       <Gallery />
+      
+      <WhyChooseUs />
       
       <Testimonials />
       
