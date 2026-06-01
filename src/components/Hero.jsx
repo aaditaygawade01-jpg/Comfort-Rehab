@@ -2,6 +2,15 @@ import React from 'react';
 import heroCurveImg from '../assets/hero-curve.png';
 
 export default function Hero() {
+  // Preload the hero image early when the component mounts
+  React.useEffect(() => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = heroCurveImg;
+    document.head.appendChild(link);
+    return () => { document.head.removeChild(link); };
+  }, []);
   return (
     <section id="home" className="hero-section">
       {/* Left content */}
@@ -43,6 +52,10 @@ export default function Hero() {
             src={heroCurveImg}
             alt="Comfort Rehab — prosthetic and orthotic care"
             className="hero-image"
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            style={{ width: '100%', height: 'auto' }}
           />
         </div>
         
@@ -54,3 +67,5 @@ export default function Hero() {
     </section>
   );
 }
+
+

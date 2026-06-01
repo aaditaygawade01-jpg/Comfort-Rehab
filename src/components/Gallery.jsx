@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const items = [
   { src: '/Gemini_Generated_Image_aj8bf4aj8bf4aj8b.png', title: 'Advanced Prosthetic Assembly',  tag: 'Technology', wide: true  },
@@ -9,6 +9,14 @@ const items = [
 
 export default function Gallery() {
   const [hovered, setHovered] = useState(null);
+
+  // Prefetch first two images to warm the cache and improve perceived load
+  useEffect(() => {
+    items.slice(0, 2).forEach((it) => {
+      const img = new Image();
+      img.src = it.src;
+    });
+  }, []);
 
   return (
     <section id="gallery" className="bg-page-section" style={{ padding: '100px 0' }}>
@@ -59,6 +67,9 @@ export default function Gallery() {
                 key={index}
                 className={`reveal-item gallery-item ${isWide ? 'wide' : 'narrow'}`}
                 style={{
+                  position: 'relative',
+                  overflow: 'hidden',
+                  aspectRatio: isWide ? '16/10' : '4/3',
                   transform: isHovered ? 'translateY(-6px)' : 'translateY(0)',
                   boxShadow: isHovered
                     ? '0 20px 50px rgba(37,99,235,0.22)'
@@ -72,6 +83,8 @@ export default function Gallery() {
                   src={item.src}
                   alt={item.title}
                   loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                   style={{
                     width: '100%',
                     height: '100%',

@@ -1,9 +1,24 @@
-import React from 'react';
-import prostheticLegIcon from '../assets/icons/prosthetic-leg.svg';
-import prostheticArmIcon from '../assets/icons/prosthetic-arm.svg';
-import prostheticFootIcon from '../assets/icons/prosthetic-foot.svg';
+import React, { useEffect } from 'react';
+import lowerLimbProsthetics from '/Lower Limb Prosthetics.jpg';
+import upperLimbProsthetics from '/Upper Limb Prosthetics.jpg';
+import lowerLimbOrthotics from '/Lower Limb Orthotics.jpg';
+import spinalOrthotics from '/Spinal Orthotics & Bracing.jpg';
+import upperLimbSplints from '/Upper Limb Splints.jpg';
+import diabeticFootCare from '/Diabetic & Sports Foot Care.png';
 
 export default function ServicePreview() {
+  const getServiceImage = (title) => {
+    const imageMap = {
+      'Lower Limb Prosthetics': lowerLimbProsthetics,
+      'Upper Limb Prosthetics': upperLimbProsthetics,
+      'Lower Limb Orthotics': lowerLimbOrthotics,
+      'Spinal Orthotics & Bracing': spinalOrthotics,
+      'Upper Limb Splints': upperLimbSplints,
+      'Diabetic & Sports Foot Care': diabeticFootCare,
+    };
+    return imageMap[title] || diabeticFootCare;
+  };
+
   const previews = [
     {
       id: '01',
@@ -22,8 +37,34 @@ export default function ServicePreview() {
       title: 'Lower Limb Orthotics',
       emoji: '🦵',
       dark: true,
+    },
+    {
+      id: '04',
+      title: 'Spinal Orthotics & Bracing',
+      emoji: '🫀',
+      dark: false,
+    },
+    {
+      id: '05',
+      title: 'Upper Limb Splints',
+      emoji: '🤚',
+      dark: false,
+    },
+    {
+      id: '06',
+      title: 'Diabetic & Sports Foot Care',
+      emoji: '⚽',
+      dark: true,
     }
   ];
+
+  // Prefetch small service images to improve perceived responsiveness
+  useEffect(() => {
+    previews.forEach(p => {
+      const img = new Image();
+      img.src = getServiceImage(p.title);
+    });
+  }, []);
 
   return (
     <section className="bg-white-section py-5">
@@ -61,7 +102,7 @@ export default function ServicePreview() {
                   </div>
 
                   {/* 3D-style Icon centered */}
-                  <div 
+                  <div
                     className="my-2"
                     style={{
                       width: '64px',
@@ -70,9 +111,20 @@ export default function ServicePreview() {
                       filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.1))',
                     }}
                   >
-                    {item.id === '01' && <img src={prostheticLegIcon} alt="Prosthetic Leg" style={{ width: '100%', height: '100%' }} />}
-                    {item.id === '02' && <img src={prostheticArmIcon} alt="Prosthetic Arm" style={{ width: '100%', height: '100%' }} />}
-                    {item.id === '03' && <img src={prostheticFootIcon} alt="Prosthetic Foot" style={{ width: '100%', height: '100%' }} />}
+                    <img 
+                      src={getServiceImage(item.title)}
+                      alt={item.title}
+                      loading="lazy"
+                      decoding="async"
+                      width="64"
+                      height="64"
+                      style={{ 
+                        width: '100%', 
+                        height: '100%',
+                        objectFit: 'contain',
+                        backfaceVisibility: 'hidden'
+                      }} 
+                    />
                   </div>
 
                   {/* Title Bottom */}
