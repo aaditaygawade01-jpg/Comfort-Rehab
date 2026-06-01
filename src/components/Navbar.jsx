@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const navLinksRef = useRef(null);
+  const [indicator, setIndicator] = useState({ left: 0, width: 0, visible: false });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,6 +32,32 @@ export default function Navbar() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Update the indicator to the active link
+  useEffect(() => {
+    const container = navLinksRef.current;
+    if (!container) return;
+    const activeEl = container.querySelector(`[data-id="${activeSection}"]`);
+    if (activeEl) {
+      setTimeout(() => {
+        setIndicator({ left: activeEl.offsetLeft, width: activeEl.offsetWidth, visible: true });
+      }, 50);
+    } else {
+      setIndicator((s) => ({ ...s, visible: false }));
+    }
+  }, [activeSection]);
+
+  // Keep indicator in sync on resize
+  useEffect(() => {
+    const onResize = () => {
+      const container = navLinksRef.current;
+      if (!container) return;
+      const activeEl = container.querySelector(`[data-id="${activeSection}"]`);
+      if (activeEl) setIndicator({ left: activeEl.offsetLeft, width: activeEl.offsetWidth, visible: true });
+    };
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [activeSection]);
 
   const scrollTo = (id) => {
     setMobileMenuOpen(false);
@@ -109,13 +137,28 @@ export default function Navbar() {
           </div>
 
           {/* Links Center (Desktop) */}
-          <div className="d-none d-md-flex align-items-center gap-4">
+          <div ref={navLinksRef} className="d-none d-md-flex align-items-center gap-4" style={{ position: 'relative' }}>
             {navLinks.map((link) => {
               const isActive = activeSection === link.id;
               return (
                 <div 
                   key={link.id} 
+                  data-id={link.id}
                   onClick={() => scrollTo(link.id)}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget;
+                    const container = navLinksRef.current;
+                    if (!container) return;
+                    setIndicator({ left: el.offsetLeft, width: el.offsetWidth, visible: true });
+                  }}
+                  onMouseLeave={() => {
+                    // revert to active
+                    const container = navLinksRef.current;
+                    if (!container) return;
+                    const activeEl = container.querySelector(`[data-id="${activeSection}"]`);
+                    if (activeEl) setIndicator({ left: activeEl.offsetLeft, width: activeEl.offsetWidth, visible: true });
+                    else setIndicator((s) => ({ ...s, visible: false }));
+                  }}
                   className="position-relative py-2"
                   style={{
                     fontFamily: 'var(--font-body)',
@@ -127,21 +170,26 @@ export default function Navbar() {
                   }}
                 >
                   {link.label}
-                  {isActive && (
-                    <span 
-                      className="position-absolute start-50 translate-middle-x"
-                      style={{
-                        bottom: '-2px',
-                        width: '4px',
-                        height: '4px',
-                        borderRadius: '50%',
-                        backgroundColor: 'var(--blue-mid)'
-                      }}
-                    />
-                  )}
                 </div>
               );
             })}
+
+            {/* Sliding underline indicator */}
+            <div
+              aria-hidden
+              style={{
+                position: 'absolute',
+                height: '3px',
+                borderRadius: '8px',
+                background: 'linear-gradient(90deg, var(--blue-mid), var(--green))',
+                bottom: '6px',
+                left: indicator.left,
+                width: indicator.width,
+                transform: indicator.visible ? 'translateY(0)' : 'translateY(6px) scaleX(0.6)',
+                opacity: indicator.visible ? 1 : 0,
+                transition: 'left 220ms cubic-bezier(.2,.9,.2,1), width 220ms cubic-bezier(.2,.9,.2,1), opacity 180ms ease'
+              }}
+            />
           </div>
 
           {/* CTAs Right */}
