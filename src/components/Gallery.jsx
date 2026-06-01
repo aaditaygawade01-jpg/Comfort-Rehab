@@ -174,33 +174,14 @@ export default function Gallery() {
         </div>
 
         {/* Stats row below gallery */}
-        <div
-          className="reveal-item"
-          style={{
-            marginTop: '48px',
-            display: 'flex',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            gap: '32px',
-          }}
-        >
+        <div className="reveal-item gallery-stats-row">
           {[
             { value: '500+', label: 'Patients Served' },
             { value: '15+', label: 'Years Experience' },
             { value: '98%', label: 'Satisfaction Rate' },
             { value: '24/7', label: 'Support Available' },
           ].map((stat, i) => (
-            <div
-              key={i}
-              style={{
-                background: '#fff',
-                borderRadius: '20px',
-                boxShadow: '0 8px 32px rgba(100,150,220,0.12)',
-                padding: '24px 36px',
-                textAlign: 'center',
-                minWidth: '140px',
-              }}
-            >
+            <div key={i} className="gallery-stats-card">
               <div
                 style={{
                   fontFamily: 'var(--font-headings)',

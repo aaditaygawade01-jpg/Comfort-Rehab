@@ -17,10 +17,10 @@ export default function Testimonials() {
       rating: 5
     },
     {
-      quote: "Outstanding spinal bracing service. They custom fabricated a Taylor brace for my father's spine compression. The fit is perfect, and it provides great support. Extremely satisfied with the treatment.",
-      name: "Amit Kulkarni",
-      condition: "Spinal Brace Patient",
-      initial: "A",
+      quote: "I want to express my sincere gratitude to Abhishek sir at Comfort Rehab for providing exceptional service in the field of prosthetics. Abhishek sir's expertise and attention to detail ensured that the patient receives a prosthetic that perfectly suits their needs and enhances their mobility. The quality of the prosthetics is truly world-class, and patient felt supported throughout the entire process. Abhishek sir's professionalism, care, and commitment to excellence made all the difference. I highly recommend Comfort Rehab to anyone seeking top-notch prosthetic solutions. Thank you for transforming lives with such dedication and skills!",
+      name: "Kiran Patil",
+      condition: "Prosthetics Patient Caregiver",
+      initial: "K",
       rating: 5
     }
   ];
@@ -49,6 +49,12 @@ export default function Testimonials() {
             <h2 className="section-title">
               Patient Stories
             </h2>
+            <div className="d-flex align-items-center justify-content-center gap-2 mt-3">
+              <span style={{ color: '#F59E0B', fontSize: '20px' }}>★★★★★</span>
+              <span style={{ fontFamily: 'var(--font-body)', fontSize: '14.5px', fontWeight: 600, color: 'var(--text-dark)' }}>
+                5.0 Rated Clinic on Google Maps
+              </span>
+            </div>
           </div>
         </div>
 
